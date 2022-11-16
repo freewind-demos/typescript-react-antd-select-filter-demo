@@ -3,8 +3,16 @@ import React from 'react'
 
 
 export default function MySelect() {
-  const users = ['aaa', 'bbb', 'ccc cc cccc cc cccc', 'ddd']
-  return <Select className='hello' dropdownClassName={'wrapped-select-option'} placeholder={'User'} dropdownMatchSelectWidth={false}>
-    {users.map(user => <Select.Option key={user} value={user}>{user}</Select.Option>)}
-  </Select>
+    const users: { label: string, value: string }[] = [
+        {label: 'aaa', value: '111'},
+        {label: 'bbb', value: '222'},
+        {label: 'ccc cc cccc cc cccc', value: '333'},
+        {label: 'ddd', value: '444'},
+    ]
+    return <div>
+        Users:
+        <Select options={users} dropdownMatchSelectWidth={false} showSearch style={{width: 100}}
+                filterOption={(value, option) => option?.label.includes(value) ?? true}
+        />
+    </div>
 };
